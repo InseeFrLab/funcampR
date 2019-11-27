@@ -75,5 +75,18 @@ you can now use your container
 docker run -p 80:3838 funcampR
 ```
 
+# Choisir le support à proposer :
 
+```
+funcampR::launch_learn(port=3838,host='0.0.0.0',file=funcampR:::tous_les_programmes('02-Vis-Basics.Rmd'))
+```
+
+```
+funcampR::launch_learn(port=3838,host='0.0.0.0',file=funcampR:::tous_les_programmes('chapitre1.Rmd'))
+```
+
+
+```
+funcampR::launch_learn(port=3838,host='0.0.0.0',file=funcampR:::tous_les_programmes('chapitre2.Rmd'))
+```
 

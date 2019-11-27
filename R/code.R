@@ -50,5 +50,5 @@ tous_les_rmd[a_garder]
 launch_learn <- function(file=sample(tous_les_programmes(),1),port=3838,host='0.0.0.0'){
   message(file)
 rmarkdown::run(file = file,
-  shiny_args = list(port = port,host=host))
+  shiny_args = list(port = port,host=host,launch.browser=FALSE))
 }

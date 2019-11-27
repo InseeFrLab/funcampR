@@ -16,10 +16,9 @@ runtime: shiny_prerendered
 ---
 
 ```{r setup, include=FALSE}
-rm(list=ls())
 library(learnr)
 library(knitr)
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE,eval=FALSE,cache=FALSE)
 
 file.copy(from = system.file(package = "funcampR","dataset","registre_pontes.csv"),
           to = "registre_pontes.csv")

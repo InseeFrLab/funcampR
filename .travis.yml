@@ -1,7 +1,7 @@
 services:
   - docker
 script:
-  - ls
+  - ls -al
   - docker info
   - docker build -t inseefrlab/grimoire-r .
 deploy:

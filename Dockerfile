@@ -1,5 +1,6 @@
 FROM inseefrlab/docklearn-base as build  
 RUN apt-get update && apt-get install -y  git-core libcurl4-openssl-dev libssl-dev libxml2-dev make pandoc zlib1g-dev pandoc-citeproc
+ADD . .
 RUN R CMD build .
 
 FROM inseefrlab/docklearn-base

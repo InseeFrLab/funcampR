@@ -22,7 +22,8 @@ Imports:
     knitr,
     readr,
     readODS,
-    babynames
+    babynames,
+    skimr
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1

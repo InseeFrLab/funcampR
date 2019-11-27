@@ -1,0 +1,17 @@
+services:
+- docker
+script:
+- ls -al
+- docker info
+- docker build -t inseefrlab/grimoire-r .
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    && docker push inseefrlab/grimoire-r
+  on:
+    branch: master
+env:
+  global:
+  - secure: 0Z0o3a+4FYw/gAsPCUbBLF+IbHdUPAd4XXduL02jCbSB4rSTHI20fCvEKv/lg8HCTYBsfmPkMZx/1w5haaA7hf1rlMK5Ro4V0UxDh2PrxuxA4NDVsaCUmN8MF7U6lqYNwTlFKdrJvpf31mN3R4stzX1mYDD+zsKlTaUF/vFqdtoolWoy3lyLog8a30Wa1RwDKb1NbdHgvYbvLUceY3mleF3YTGwfpPgxXcczFgTSwF1iKfBa9meBu7Wz+Czuk3F2jk/Et0plYdlItX+RLqVtynvqmcXUXtIAdhnr9fQnLw8zsmIgxBzn27wYTNS0ifItgd8eiWkBqOUCM3KdAzDI9g/PBoKl6/PCMZprD0/WEJ8neZTzGVZ+2hcL2Ocoahc8PObc7Uu2HJZMELWYTZeBd4CYmUOuz8QGiz6pIgMyEMevpDAQlSgMZULKUMYZ+Zrgoz0mZSqbSFXPqCkte/jCNap1MTQN960cWlA8RaeIGLmXwzx2mT4qkuDzg5gnhs7gmRiP9L0BQ0CTDKPlnKLmXoOba59kM7n+5cbA7FnRPYVPvCwUjw5XJ0Hyqf92Y/mregod+a4ed4VqorK5J/eOhrrjeld8lOWNn3KtEtsMg0Zhqbz/FFmyJ5FTo22kZCMtx++R+WvCKJ97u+KI1QLsZY6ieXc9GN+3PmaTsOrdtWI=
+  - secure: kYFZbT1TUmgC9eHZHt8lFO7g+xbSYFjWaeYmKTpAcKmmJCS278hpk5sqABu8oHJshWOB0Tz9E/23gXljyKVZtv012N/yXxHaD6QakqsvvZWnt9mHu++9B+fLFjtjDdsWHcip5VItApp7iFRPGbUeSD2/byncYENw1C8ir5Gj6tJQAgl5xSEFc66JsHjL+fF/RnlXEAFuYNecwD5oS+sHz1Nn0WrGKCY9EURgblTVcUpcn2tlw4FsTpRQZAXKhzjnUNk6tqAWZbVzcYXMEnhY7RwJk5oAUX/jUO2G4OyKKiC3hULlYBouQfDjvtXnEiMJugVXOgnYjMBFbSmUNrm/j6VWMc0IW5aNm9esDKnDMgjEuKyGyYIc6nK3QdOrtR3W1jWgw0fKu8ISH+zkVa1y6DqQmItu4WTlK3q6RcfVnvL+JoFGDxHrL9GjKhoaGHfb7rxx9oZk7ElVIDauV3dvfGbOQJGcZhoFmTmyUE/8Fi4EEGhxss/lnAWE+elrf64Hkoehwg4rDhWQJh6SbCsz0Ys9PLVGUTreZ3z+qfyWezKYNVPzG3ImqjR6SgDHIPsPoseuzHywcTY3hWvwqcK9Q0mhyepzIt41C5r5oQGu1mY/kJ3zHT6lVRim+czUl0yV0WPw73AmZJ5behhla1o0rgyj8sKKtJwBSktqoIROoDY=

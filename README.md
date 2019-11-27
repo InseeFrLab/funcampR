@@ -1,26 +1,27 @@
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # docklearn
 
 <!-- badges: start -->
 
+[![Build Status](https://travis-ci.org/InseeFrLab/funcampR.svg?branch=master)](https://travis-ci.org/InseeFrLab/funcampR)
+
 <!-- badges: end -->
 
-The goal of funcampR is to deploy shiny\_prerendered rmd from R packages
+The goal of funcampR is to deploy shiny_prerendered rmd from R packages
 and/or docker
 
 ## As an R package
 
 ### install the packages
 
-``` r
+```r
 remotes::install_github("InseeFrLab/funcampR")
 ```
 
 ### launch function
 
-``` r
+```r
 funcampR::launch_learn()
 ```
 
@@ -32,18 +33,18 @@ from the package source ( for example using the Rsutio project)
 
 create `"docklearn_*.tar.gz"` file
 
-``` r
+```r
 devtools::build()
 ```
 
 ### Create a Dockerfile
 
-can be created using {golem} with golem::add\_dockerfile() but, you have
+can be created using {golem} with golem::add_dockerfile() but, you have
 to edit the CMD to have
 `funcampR::launch_learn(port=3838,host='0.0.0.0')` and you can use
 `inseefrlab/docklearn-base` as FROM.
 
-``` txt
+```txt
 FROM inseefrlab/docklearn-base
 RUN apt-get update && apt-get install -y  git-core libcurl4-openssl-dev libssl-dev libxml2-dev make pandoc zlib1g-dev pandoc-citeproc
 RUN Rscript -e 'remotes::install_github("InseeFrLab/funcampR",ref="master",upgrade = "never")'
@@ -55,13 +56,13 @@ CMD  ["R", "-e", "funcampR::launch_learn(port=3838,host='0.0.0.0')"]
 
 from the folder containing the `Dockerfile` using terminal launch :
 
-``` bash
+```bash
 docker build -t funcampR .
 ```
 
 you can now use your container
 
-``` bash
+```bash
 docker run -p 80:3838 funcampR
 ```
 

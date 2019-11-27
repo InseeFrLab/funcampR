@@ -1,0 +1,207 @@
+---
+title: "Chapitre 7 - Conjuguer pour mieux cultiver - ou plutôt, pour mieux calculer..."
+output: 
+  html_document:
+    theme: cerulean
+    highlight: haddock
+    toc: true
+    toc_float:
+      collapsed: true
+      smooth_scroll: false
+    number_sections: false
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(parsons)
+library(knitr)
+library(readODS)
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+```
+
+
+## Apprenons à conjuguer les sortilèges
+
+Un bon mage est appelé à évoquer de multiples sortilèges, qu'il va combiner pour accroître son pouvoir. De même, dans la langue des Runes, les sortilèges peuvent se conjuguer les uns les autres, c'est-à-dire être associés dans un ordre qui vous permettra d'obtenir l'effet escompté. La conjugaison des sortilèges se fonde sur un étonnant symbole : le **pipe** (prononcez "paille-peu"), représenté par les lettres %>%.
+
+```{r image2, echo=FALSE, fig.cap="", out.width = '8%', fig.align='center'}
+knitr::include_graphics("images/symbole_pipe.png")
+```
+
+**Le pipe** est un opérateur qui facilite l'enchainement de sortilèges sur un fichier de données. Le signe **%>%** peut être lu comme **"ensuite".**  Ainsi, si on utilise cet opérateur:
+
+```{r, collapse = TRUE, eval=FALSE}
+summary(mon_fichier)
+# EST EQUIVALENT A :
+mon_fichier %>% summary()
+```
+
+Le sortilège se trouvant immédiatement à la droite du %>% utilise comme objet en entrée l'élement se trouvant à la gauche du %>%. En langue vernaculaire, cela donne: **"Je prends mon fichier de données et ensuite je calcule les indicateurs statistiques sur l'ensemble des variables de ce fichier"**
+<p>
+<p>
+De la même façon :
+```{r, collapse = TRUE, eval=FALSE}
+skim(mon_fichier,nom_de_la_variable)
+# EST EQUIVALENT A :
+mon_fichier %>% skim(nom_de_la_variable)
+```
+
+Si on traduit, cela donne: **"Je prends mon fichier de données et ensuite je calcule les indicateurs statistiques sur la variable selectionnée dans ce fichier"**
+
+## Un peu de pratique...
+ 
+Continuons avec l'exploitation du fichier des fermiers Tellus et Galia, d'abord avec le sortilège `summary()`
+
+```{r,  echo=FALSE, message = FALSE}
+# fichier_tellus<-read_ods(path="E:/icaRius/data/recensement_agricole_statia_Tellus.ods")
+# fichier_galia<-read_ods(path="E:/icaRius/data/recensement_agricole_statia_Galia.ods")
+fichier_tellus<-read_ods(path=system.file(package = "funcampR","data","recensement_agricole_statia_Tellus.ods"))
+# fichier_galia<-read_ods(path="E:/icaRius/data/recensement_agricole_statia_Galia.ods")
+fichier_galia<-read_ods(path=system.file(package = "funcampR","data","recensement_agricole_statia_Galia.ods"))
+
+```
+
+```{r mod2-tutoriel1-ex5,exercise=TRUE}
+# Le livre de récolte est déjà chargé, avec le nom fichier_tellus
+
+# En utilisant le %>% et le sortilège summary(), 
+# calculer les statistiques descriptives sur toutes les variables 
+# pour le fichier
+
+
+# fin de l'exercice
+``` 
+
+```{r mod2-tutoriel1-ex5-solution}
+# Le livre de récolte est déjà chargé, avec le nom fichier_tellus
+
+# En utilisant le %>% et le sortilège summary(), 
+# calculer les statistiques descriptives sur toutes les variables 
+# sur fichier_tellus
+fichier_tellus %>% summary()
+
+# fin de l'exercice
+``` 
+
+Et maintenant avec le sortilège `skim()`
+
+```{r mod2-tutoriel1-ex6,exercise=TRUE}
+# Le livre de récolte est déjà chargé, avec le nom fichier_galia
+
+# En utilisant le %>% et le sortilège skim(), 
+# calculer les statistiques descriptives sur la variable Litres
+# sur fichier_galia
+
+
+
+# fin de l'exercice
+``` 
+ 
+
+```{r mod2-tutoriel1-ex6-solution}
+# Le livre de récolte est déjà chargé, avec le nom fichier_galia
+
+# En utilisant le %>% et le sortilège skim(), 
+# calculer les statistiques descriptives sur la variable Litres
+# sur fichier_galia
+fichier_galia %>% skim(Litres)
+
+# fin de l'exercice
+```  
+ 
+ 
+## Le secret de Galia ?
+
+Grace à Icarius, le conflit est résolu, et l'humble Galia est désormais reconnu comme le meilleur cultivateur de Mandragore. Tous sont maintenant curieux de connaitre le sortilège utilisé par Galia pour y arriver. Utiliserait-il les produits de la magie noire (qu'on appelle les biotues dans le monde agricole de Statia) ? 
+
+*"Vous n'y êtes pas, chers compagnons. Voyons, il est temps pour moi de partager ma recette avec vous".* 
+
+Dans le monde de Statia, le pipe permet de produire des enchainements de sortilèges... comme de composer toutes les étapes d'une recette. Mais attention : pour qu'une recette soit un succès, encore faut-il suivre les étapes dans le bon ordre. Il en va de même pour un bon sortilège...
+
+Imaginez Sylvain, un cuisinier du dimanche qui veut faire du pain, voilà la recette telle qu'il la trouvera sur maRmiton, la célèbre bibliothèque de cuisine : *prends la farine, ajoute le sel, puis ajoute la levure, puis ajoute l'eau, puis mélange le tout, puis laisse reposer la pate réalisée, enfin met au four pendant 13 minutes à 240°C.*
+
+En langage des Runes, la même recette s'écrira de la façon suivante :
+
+```{r,eval = F}
+farine %>% 
+  ajouter(sel) %>% 
+  ajouter(levure) %>% 
+  ajouter(eau) %>% 
+  melanger() %>% 
+  laisser_reposer() %>% 
+  mettre_au_four(température = 240°C,temps = 13minutes)
+```
+
+
+## De l'art de bien cultiver sa Mandragore...
+
+Vous avez compris la magie du pipe ? A vous de jouer !
+
+Tellus a bien fourni son sortilège, mais dans le désordre. Recomposons les étapes comme il convient. Voici quelques indices :
+
+- Une conjugaison de sortilège doit d'abord commencer par l'objet sur lequel débute l'enchainement de sortilèges. Ici, l'objet par tout commence, c'est le champ...
+- N'oubliez pas : Galia n'utilise pas de magie noire, donc pas de biotues (et pas de pesticide non plus !)
+- Ne vous laissez pas embrouiller par le terrible SaSSoS et sa langue serpentine - pas de `set` ou de `run` dans la langue des Runes.
+- Le meilleur moment pour arroser une terre, c'est quand elle vient d'être labourée puis semée.
+- Les coccinelles sont les amies des Mandragore, c'est bien connu !
+- pour toute plante fragile, toujours prévoir de désherber à la main...
+- A la toute fin, il n'y a plus qu'à récolter...
+
+Saurez-vous remettre les étapes dans l'ordre ?
+
+
+```{r quiz}
+question_parsons(
+  initial = c(
+    "champ %>%",
+    "data champ;set champ;run;",
+    "semer() %>%",
+    "désherber(avec=mains) %>%",
+    "désherber(avec=herbicides) %>%",
+    "arroser() %>%",
+    "ajouter(coccinelles) %>%",
+    "labourer() %>%",
+    "ajouter(biotues) %>%",
+    "recolter()"
+  ),
+  pass_if(
+    c(
+    "champ %>%",
+    "labourer() %>%",
+    "semer() %>%",
+    "arroser() %>%",
+    "désherber(avec=mains) %>%",
+    "ajouter(coccinelles) %>%",
+    "recolter()"
+    ),
+    message = "Bravo vous être des champions de la culture de la mandragore! Rentrez le code 777 dans le jeu icaRius pour continuer l'aventure"
+  ),
+    pass_if(
+    c(
+    "champ %>%",
+    "labourer() %>%",
+    "semer() %>%",
+    "arroser() %>%",
+    "ajouter(coccinelles) %>%",
+    "désherber(avec=mains) %>%",
+    "recolter()"
+    ),
+    message = "Bravo vous être des champions de la culture de la mandragore! Rentrez le code 777 dans le jeu icaRius pour continuer l'aventure"
+  ),
+  fail_if(
+    ~length(.) < 2,
+    message = "Inclure au moins deux verbes"
+  ),
+  fail_if(
+    ~{.[1] != "champ %>%"},
+    message = "Votre solution doit commencer par 'champ %>%'"
+  )
+)
+```
+
+ 

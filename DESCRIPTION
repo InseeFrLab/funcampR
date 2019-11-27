@@ -21,6 +21,7 @@ Imports:
     prenoms,
     knitr,
     readr,
+    readODS,
     babynames
 Encoding: UTF-8
 LazyData: true

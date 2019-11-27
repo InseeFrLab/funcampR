@@ -1,12 +1,12 @@
 Package: funcampR
-Title: An Amazing Shiny App
+Title: Ressources pédagogiques funcamp
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "firstname",
-           family = "lastname",
+    person(given = "Vincent",
+           family = "Guyader",
            role = c("aut", "cre"),
-           email = "your@email.com")
-Description: What the package does (one paragraph).
+           email = "vincent@thinkr.fr")
+Description: Ressources pédagogiques funcamp.
 License: GPL-3
 Imports: 
     magrittr,

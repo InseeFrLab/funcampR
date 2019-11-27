@@ -24,5 +24,5 @@ Imports:
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
-Remotes: rstudio/parsons
-Remotes: thinkr-open/prenoms
+Remotes: rstudio/parsons,
+    thinkr-open/prenoms

@@ -1,0 +1,18 @@
+services:
+  - docker
+script:
+  - ls
+  - docker info
+  - docker build -t inseefrlab/grimoire-r .
+deploy:
+  skip_cleanup: true
+  provider: script
+  script:
+    echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    && docker push inseefrlab/bootcampjs-api
+  on:
+    branch: master
+env:
+  global:
+    - secure: HZTEcGoFn7TXBtyyBRVlOeOBFsUvnYTSf9bwpCVemKilFKyLvBk1X+468RZ8hqxsZ3Kot0ikNrWKcMuUzeJDO5IZWwIYoPkDLUIaKPrjVkaORAoG/8d2eL5DXzMhVo+kZnM7rzJX/tT33MSspEgXHw8V6rAhpld71/hviCe+riClBsPJDP2oSeM0NnUp8Vb4Hf2I6dnVjFUsh+hLBOerbQi1Xhag0fLbqRalB81o9YfZN6hmC9TWdVjOvNISDXpUis0gdjroAHmkzilW3QmZ+yZk039fmqe/Sn9cRtjeB6aZJIAj9PG4z5ZzBesj2dzzmxwzJnLX7TsGXjL4K/PyEUodPK7Xg1m8s0ndFLy6AigN41Ox37fao6XQlw7IpCbviVg1Rs3o3tLAdAe+wVmTZZ25fvTGPdORf96Pkj+Z7NGlTuN0inUTms9+mVcNS3/Lp/Yckg7T4IhYJvkO2X6BoXiXjQt3EctIFuylVrDJxNqb4S5VkbqHDPdplItPhdXz8y2F3CT+NQXaf/SzEYPXbYBx3gdkk+m+UdHwZC2+BhneN1QGzYOs5fecKY6EqUsevLJUBOjS3BhWLBlRHjG+jgFB+tlkw4cX/Vo6yEGmz2gWwgIpe33J4GOyXMIBqZLQB4j8GZyzEBqUkeUYSC/c3jsR9eacnnI07EjoK0eXXco=
+    - secure: favFNhlt2/pnO6/adgsle3QBNyeC9dPspTH3b/rZrW/hrhnZ+2g0SjeLiLNnXFkOhBXGIg6gpj6yNLKX+G0q7gbAO1zbgMnj1Vc0JYF9T69Rj8Qhjj1ldzExcc01OPdfltK03b/xDtjPmTVm6+1N59IrVmhgDflgffgCRDChuKdNcfsmSfcW1CYQJhHtMxe06+8nDFThOg9ofAAqg3zqpjthZ5RYL6RHserHxLGlDO4IqaHRFWH53TzS8NOXHfbVDUPlBn8mpcjqHCpJnJoGJJkWK7jmE5XyG+JinnYJPe0W1ViCe7kWkIbOI6R/biXbU2HkZD5R8Vv6W2dEbor6zIGpNLdD2IMjRfW2sK4nDFaVJ6OeMJ7BYQZciteJO9qPtQ5YmLpkHFa5OUalmRoruhl3+7epaijkdmnTLaMcA7Y83Btz6qT0eKNbg6YYu3g6JBO7A0NQSgX6Djg6xHRKBS7wtyzJ4x8rouW8UvUGndc7lFQceWwKWVMLz+UL3mTphLh3MB92vJvBt0t8McL8OHFfwJVb3v9+HrK49URnuv44GmzRaDDoj52vzr6FSjTfT8/Ma/VJ+tsGqUbNbZV6mXnDeh93fz1yBUGyugLohhS95IYGA9p0rSe3PEoOniw4pS1UvrfV+QaZuK5alBXsIFHfyccb9eCYxHl32ZBRQNM=

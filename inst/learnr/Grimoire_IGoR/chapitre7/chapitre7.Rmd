@@ -60,9 +60,9 @@ Continuons avec l'exploitation du fichier des fermiers Tellus et Galia, d'abord 
 ```{r,  echo=FALSE, message = FALSE}
 # fichier_tellus<-read_ods(path="E:/icaRius/data/recensement_agricole_statia_Tellus.ods")
 # fichier_galia<-read_ods(path="E:/icaRius/data/recensement_agricole_statia_Galia.ods")
-fichier_tellus<-read_ods(path=system.file(package = "funcampR","data","recensement_agricole_statia_Tellus.ods"))
+fichier_tellus<-read_ods(path=system.file(package = "funcampR","dataset","recensement_agricole_statia_Tellus.ods"))
 # fichier_galia<-read_ods(path="E:/icaRius/data/recensement_agricole_statia_Galia.ods")
-fichier_galia<-read_ods(path=system.file(package = "funcampR","data","recensement_agricole_statia_Galia.ods"))
+fichier_galia<-read_ods(path=system.file(package = "funcampR","dataset","recensement_agricole_statia_Galia.ods"))
 
 ```
 

@@ -17,10 +17,7 @@ tutorial_options(exercise.completion = FALSE)
 
 
 
-# zelda <- readr::read_rds(path = "www/zelda.rds")
-# prenoms <- readr::read_rds(path = "www/prenoms.rds")
-zelda <- readr::read_rds(path = system.file("data","zelda.rds",package = "funcampR"))
-# prenoms <- readr::read_rds(path = system.file("data","prenom.rds",package = "docklearn"))
+zelda <- readr::read_rds(path = system.file("dataset","zelda.rds",package = "funcampR"))
 
 library(prenoms)
 data("prenoms")

@@ -2,14 +2,16 @@
 % Please edit documentation in R/code.R
 \name{launch_learn}
 \alias{launch_learn}
-\title{Title}
+\title{Lance un support learnr}
 \usage{
 launch_learn(file = sample(tous_les_programmes(), 1), port = 3838,
   host = "0.0.0.0")
 }
 \arguments{
-\item{port}{}
+\item{file}{file to deploy}
+
+\item{port}{port to use}
 }
 \description{
-Title
+Lance un support learnr
 }

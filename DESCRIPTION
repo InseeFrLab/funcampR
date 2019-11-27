@@ -2,10 +2,23 @@ Package: funcampR
 Title: Ressources pédagogiques funcamp
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "Vincent",
+    c(person(given = "Vincent",
            family = "Guyader",
            role = c("aut", "cre"),
-           email = "vincent@thinkr.fr")
+           email = "vincent@thinkr.fr",
+           comment = c(ORCID = "0000-0003-0671-9270")
+           ),
+    person(given = "Diane",
+           family = "Beldame",
+           role = c("aut"),
+           email = "diane@thinkr.fr"),
+    person(given = "Arnaud",
+           family = "Degorre",
+           role = c("aut"),
+           email = "arnaud.degorre@insee.fr"),
+    person(given = "INSEE",
+             role = "cph")          
+           )
 Description: Ressources pédagogiques funcamp.
 License: GPL-3
 Imports: 

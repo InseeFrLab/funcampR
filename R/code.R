@@ -22,15 +22,16 @@ is_shiny_prerendered <- function(header,balise="runtime:shiny_prerendered"){
   res >= 1
 }
 
-#' @param pattern patterne des fichier a proposer
+#' liste tous les Rmd candidats au deploiement contenus dans le package
+#' 
+#' @param pattern pattern des fichiers a proposer
 #'
 #' @export
 tous_les_programmes <- function(pattern = "*.Rmd$"){
 tous_les_rmd<-list.files(system.file("learnr", package = "funcampR"),
            all.files = TRUE,full.names = TRUE,
            include.dirs = FALSE,no.. = FALSE,
-           recursive = TRUE
-           ,
+           recursive = TRUE,
            pattern = pattern
            )
 a_garder <- tous_les_rmd %>%
@@ -39,12 +40,11 @@ a_garder <- tous_les_rmd %>%
 tous_les_rmd[a_garder]
 }
 
-#' Title
+#' Lance un support learnr
 #'
-#' @param file
-#' @param port
+#' @param file file to deploy
+#' @param port port to use
 #'
-#' @return
 #' @export
 #'
 launch_learn <- function(file=sample(tous_les_programmes(),1),port=3838,host='0.0.0.0'){

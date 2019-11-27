@@ -10,6 +10,7 @@ Description: What the package does (one paragraph).
 License: GPL-3
 Imports: 
     magrittr,
+    tidyverse,
     purrr,
     rmarkdown,
     stringr,
